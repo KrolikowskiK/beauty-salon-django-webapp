@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load custom_tags %}
+
+{% block title %}Rejestracja{% endblock %}
+
+{% block content %}
+    <form novalidate method="post">
+        {% csrf_token %}
+        {% for field in form.visible_fields %}
+            <div class="fieldWrapper">
+                {{ field.label_tag }}
+                {{ field|addclass:'form-control' }}
+                {{ field.errors }}
+            </div>
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}
