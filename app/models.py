@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 
 class Service(models.Model):
@@ -40,3 +41,12 @@ class Shift(models.Model):
         start = self.start.strftime("%H:%M")
         end = self.end.strftime("%H:%M")
         return f"Date: {date}, start: {start}, end: {end}"
+
+
+class Appointment(models.Model):
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    client = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    date = models.DateTimeField()
+
+    def __str__(self) -> str:
+        return f"Wizyta {self.client} u {self.employee} ({self.date.strftime('%d/%m/%Y %H:%M')})"

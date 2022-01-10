@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Service, Employee, WorkSchedule, Shift
+from .models import Service, Employee, WorkSchedule, Shift, Appointment
 
 
 class ShiftInline(admin.TabularInline):
@@ -15,3 +15,4 @@ class WorkScheduleAdmin(admin.ModelAdmin):
 admin.site.register(Service)
 admin.site.register(Employee)
 admin.site.register(WorkSchedule, WorkScheduleAdmin)
+admin.site.register(Appointment)
