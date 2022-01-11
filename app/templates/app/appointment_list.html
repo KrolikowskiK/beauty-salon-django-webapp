@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load custom_tags %}
+
+{% block title %}Lista wizyt{% endblock %}
+
+{% block content %}
+    <h1>Wizyty</h1>
+    <ul>
+    {% for appointment in object_list %}
+        <li>{{ appointment.employee }} - {{ appointment.date }}</li>
+    {% empty %}
+        <li>No articles yet.</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
