@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.urls import reverse
 
 
 class Service(models.Model):
@@ -47,6 +48,9 @@ class Appointment(models.Model):
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
     client = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     date = models.DateTimeField()
+
+    def get_delete_url(self):
+        return reverse("author-delete", kwargs={"pk": self.id})
 
     def __str__(self) -> str:
         return f"Wizyta {self.client} u {self.employee} ({self.date.strftime('%d/%m/%Y %H:%M')})"
