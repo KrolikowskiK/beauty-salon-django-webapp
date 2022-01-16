@@ -8,6 +8,14 @@ class Service(models.Model):
     name = models.CharField(max_length=40)
     price = models.DecimalField(max_digits=8, decimal_places=2)
 
+    @admin.display(description="Nazwa usługi")
+    def service_name(self):
+        return self.name
+
+    @admin.display(description="Cena")
+    def service_price(self):
+        return self.price
+
     def __str__(self) -> str:
         return self.name
 
@@ -16,6 +24,18 @@ class Employee(models.Model):
     name = models.CharField(max_length=40)
     employment_date = models.DateField(auto_now_add=True)
     service = models.ForeignKey(Service, on_delete=models.SET_NULL, null=True)
+
+    @admin.display(description="Imię pracownika")
+    def employee_name(self):
+        return self.name
+
+    @admin.display(description="Data zatrudnienia", ordering="employment_date")
+    def employee_employment_date(self):
+        return self.employment_date
+
+    @admin.display(description="Wykonywana usługa")
+    def employee_service(self):
+        return self.service
 
     def __str__(self) -> str:
         return self.name
