@@ -10,6 +10,7 @@ class ShiftInline(admin.TabularInline):
 
 class WorkScheduleAdmin(admin.ModelAdmin):
     inlines = [ShiftInline]
+    list_display = ("employee_name", "work_schedule_period")
 
 
 admin.site.register(Service)

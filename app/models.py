@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.urls import reverse
+from django.contrib import admin
 
 
 class Service(models.Model):
@@ -28,6 +29,14 @@ class WorkSchedule(models.Model):
         employee = self.employee
         date = self.date.strftime("%m/%Y")
         return f"{employee}, {date}"
+
+    @admin.display(description="Okres", ordering="date")
+    def work_schedule_period(self):
+        return self.date.strftime("%m/%Y")
+
+    @admin.display(description="Pracownik")
+    def employee_name(self):
+        return self.employee
 
 
 class Shift(models.Model):
