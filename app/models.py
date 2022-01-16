@@ -23,7 +23,6 @@ class Employee(models.Model):
 class WorkSchedule(models.Model):
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
     date = models.DateField()
-    approved = models.BooleanField(default=False)
 
     def __str__(self) -> str:
         employee = self.employee
