@@ -45,11 +45,6 @@ class WorkSchedule(models.Model):
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
     date = models.DateField()
 
-    def __str__(self) -> str:
-        employee = self.employee
-        date = self.date.strftime("%m/%Y")
-        return f"{employee}, {date}"
-
     @admin.display(description="Okres", ordering="date")
     def work_schedule_period(self):
         return self.date.strftime("%m/%Y")
@@ -57,6 +52,11 @@ class WorkSchedule(models.Model):
     @admin.display(description="Pracownik")
     def employee_name(self):
         return self.employee
+
+    def __str__(self) -> str:
+        employee = self.employee
+        date = self.date.strftime("%m/%Y")
+        return f"{employee}, {date}"
 
 
 class Shift(models.Model):
