@@ -8,7 +8,10 @@ class ServiceAdmin(admin.ModelAdmin):
 
 
 class EmployeeAdmin(admin.ModelAdmin):
-    list_display = ("employee_name", "employee_employment_date", "employee_service")
+    list_display = (
+        "employee_employment_date",
+        "employee_service",
+    )
 
 
 class ShiftInline(admin.TabularInline):

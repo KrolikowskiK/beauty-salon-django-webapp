@@ -2,6 +2,9 @@ from django.db import models
 from django.conf import settings
 from django.urls import reverse
 from django.contrib import admin
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 class Service(models.Model):
@@ -21,13 +24,9 @@ class Service(models.Model):
 
 
 class Employee(models.Model):
-    name = models.CharField(max_length=40)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     employment_date = models.DateField(auto_now_add=True)
     service = models.ForeignKey(Service, on_delete=models.SET_NULL, null=True)
-
-    @admin.display(description="Imię pracownika")
-    def employee_name(self):
-        return self.name
 
     @admin.display(description="Data zatrudnienia", ordering="employment_date")
     def employee_employment_date(self):
