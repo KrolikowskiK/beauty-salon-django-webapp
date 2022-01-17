@@ -17,24 +17,36 @@ class CustomUserAdmin(UserAdmin):
     model = User
     list_display = (
         "email",
-        "is_staff",
-        "is_active",
-    )
-    list_filter = (
-        "email",
+        "first_name",
+        "last_name",
         "is_staff",
         "is_active",
     )
     fieldsets = (
-        (None, {"fields": ("email", "password")}),
-        ("Permissions", {"fields": ("is_staff", "is_active")}),
+        (
+            None,
+            {
+                "fields": (
+                    "email",
+                    "first_name",
+                    "last_name",
+                )
+            },
+        ),
+        ("Uprawnienia", {"fields": ("is_staff", "is_active")}),
     )
     add_fieldsets = (
         (
             None,
             {
                 "classes": ("wide",),
-                "fields": ("email", "password1", "password2", "is_staff", "is_active"),
+                "fields": (
+                    "email",
+                    "first_name",
+                    "last_name",
+                    "password1",
+                    "password2",
+                ),
             },
         ),
     )
