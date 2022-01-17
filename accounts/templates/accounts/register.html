@@ -4,6 +4,7 @@
 {% block title %}Rejestracja{% endblock %}
 
 {% block content %}
+<main class="form-signin">
     <form novalidate method="post">
         {% csrf_token %}
         {% for field in form.visible_fields %}
@@ -15,4 +16,5 @@
         {% endfor %}
         <button type="submit">Submit</button>
     </form>
+</main>
 {% endblock %}
