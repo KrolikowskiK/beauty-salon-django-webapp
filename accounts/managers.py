@@ -7,7 +7,7 @@ class CustomUserManager(BaseUserManager):
     for authentication instead of usernames.
     """
 
-    def create_user(self, email, first_name, last_name, password):
+    def create_user(self, email, first_name, last_name, password, **extra_fields):
         """
         Create and save a User with the given email, first name, last name and password.
         """
@@ -18,7 +18,9 @@ class CustomUserManager(BaseUserManager):
             raise ValueError("The first name must be set")
         if not last_name:
             raise ValueError("The last name must be set")
-        user = self.model(email=email, first_name=first_name, last_name=last_name)
+        user = self.model(
+            email=email, first_name=first_name, last_name=last_name, **extra_fields
+        )
         user.set_password(password)
         user.save()
         return user
