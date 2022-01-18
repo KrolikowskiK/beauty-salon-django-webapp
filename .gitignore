@@ -5,6 +5,9 @@
 __pycache__
 *.sqlite3
 media
+# Migrations #
+*/migrations/*
+!*/migrations/__init__.py
 
 # Python # 
 *.py[cod] 
