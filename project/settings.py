@@ -130,3 +130,5 @@ AUTH_USER_MODEL = "accounts.CustomUser"
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+
+LOGIN_REDIRECT_URL = "appointment-list"

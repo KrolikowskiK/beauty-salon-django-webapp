@@ -1,6 +1,5 @@
 from django.contrib.auth.views import LoginView
 from django.views.generic.edit import CreateView
-from django.shortcuts import render
 
 from .forms import CustomUserCreationForm
 
@@ -19,7 +18,3 @@ class UserLoginView(LoginView):
     """
 
     template_name = "accounts/login.html"
-
-
-def profile_view(request):
-    return render(request, "accounts/profile.html")
