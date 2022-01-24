@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 from .models import Service, Employee, WorkSchedule, Shift, Appointment
+from .forms import EmployeeForm
 
 
 class ServiceAdmin(admin.ModelAdmin):
@@ -8,7 +9,10 @@ class ServiceAdmin(admin.ModelAdmin):
 
 
 class EmployeeAdmin(admin.ModelAdmin):
+    form = EmployeeForm
     list_display = (
+        "employee_first_name",
+        "employee_last_name",
         "employee_employment_date",
         "employee_service",
     )

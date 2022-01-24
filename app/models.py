@@ -23,10 +23,20 @@ class Service(models.Model):
         return self.name
 
 
-class Employee(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+class Employee(User):
     employment_date = models.DateField(auto_now_add=True)
-    service = models.ForeignKey(Service, on_delete=models.SET_NULL, null=True)
+    service = models.ForeignKey(
+        Service, verbose_name="typ usługi", on_delete=models.SET_NULL, null=True
+    )
+
+    @admin.display(description="Imię")
+    def employee_first_name(self):
+        return self.first_name
+
+    @admin.display(description="Nazwisko")
+    def employee_last_name(self):
+        return self.last_name
 
     @admin.display(description="Data zatrudnienia", ordering="employment_date")
     def employee_employment_date(self):
@@ -37,7 +47,7 @@ class Employee(models.Model):
         return self.service
 
     def __str__(self) -> str:
-        return self.name
+        return f"{self.first_name} {self.last_name}"
 
 
 class WorkSchedule(models.Model):
