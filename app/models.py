@@ -8,8 +8,8 @@ User = get_user_model()
 
 
 class Service(models.Model):
-    name = models.CharField(max_length=40)
-    price = models.DecimalField(max_digits=8, decimal_places=2)
+    name = models.CharField("nazwa", max_length=40)
+    price = models.DecimalField("cena", max_digits=8, decimal_places=2)
 
     @admin.display(description="Nazwa usługi")
     def service_name(self):
@@ -22,6 +22,9 @@ class Service(models.Model):
     def __str__(self) -> str:
         return self.name
 
+    class Meta:
+        verbose_name = "usługa"
+        verbose_name_plural = "usługi"
 
 
 class Employee(User):
@@ -49,10 +52,16 @@ class Employee(User):
     def __str__(self) -> str:
         return f"{self.first_name} {self.last_name}"
 
+    class Meta:
+        verbose_name = "pracownik"
+        verbose_name_plural = "pracownicy"
+
 
 class WorkSchedule(models.Model):
-    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
-    date = models.DateField()
+    employee = models.ForeignKey(
+        Employee, verbose_name="pracownik", on_delete=models.CASCADE
+    )
+    date = models.DateField("data")
 
     @admin.display(description="Okres", ordering="date")
     def work_schedule_period(self):
@@ -67,12 +76,16 @@ class WorkSchedule(models.Model):
         date = self.date.strftime("%m/%Y")
         return f"{employee}, {date}"
 
+    class Meta:
+        verbose_name = "grafik"
+        verbose_name_plural = "grafiki"
+
 
 class Shift(models.Model):
     work_schedule = models.ForeignKey(WorkSchedule, on_delete=models.CASCADE)
-    date = models.DateField()
-    start = models.TimeField()
-    end = models.TimeField()
+    date = models.DateField("dzień zmiany")
+    start = models.TimeField("czas rozpoczęcia")
+    end = models.TimeField("czas zakończenia")
 
     def __str__(self) -> str:
         date = self.date.strftime("%m/%Y")
@@ -80,14 +93,32 @@ class Shift(models.Model):
         end = self.end.strftime("%H:%M")
         return f"Date: {date}, start: {start}, end: {end}"
 
+    class Meta:
+        verbose_name = "zmiana"
+        verbose_name_plural = "zmiany"
+
 
 class Appointment(models.Model):
-    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
-    client = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    date = models.DateTimeField()
+    employee = models.ForeignKey(
+        Employee,
+        verbose_name="pracownik",
+        on_delete=models.CASCADE,
+        related_name="employee_appointments",
+    )
+    client = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        verbose_name="klient",
+        on_delete=models.CASCADE,
+        related_name="client_appointments",
+    )
+    date = models.DateTimeField("data wizyty")
 
     def get_delete_url(self):
         return reverse("author-delete", kwargs={"pk": self.id})
 
     def __str__(self) -> str:
         return f"Wizyta {self.client} u {self.employee} ({self.date.strftime('%d/%m/%Y %H:%M')})"
+
+    class Meta:
+        verbose_name = "wizyta"
+        verbose_name_plural = "wizyty"
