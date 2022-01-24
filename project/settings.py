@@ -132,3 +132,5 @@ STATICFILES_DIRS = [
 ]
 
 LOGIN_REDIRECT_URL = "appointment-list"
+
+LOGOUT_REDIRECT_URL = "/"
