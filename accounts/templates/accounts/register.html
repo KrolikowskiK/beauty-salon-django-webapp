@@ -4,17 +4,43 @@
 {% block title %}Rejestracja{% endblock %}
 
 {% block content %}
-<main class="form-signin">
+<main class="form-login position-absolute top-50 start-50 translate-middle">
     <form novalidate method="post">
-        {% csrf_token %}
-        {% for field in form.visible_fields %}
-            <div class="fieldWrapper">
-                {{ field.label_tag }}
-                {{ field|addclass:'form-control' }}
-                {{ field.errors }}
-            </div>
-        {% endfor %}
-        <button type="submit">Submit</button>
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+      <h1 class="h3 mb-3 fw-normal text-center">Zarejestruj się</h1>
+  
+      <div class="form-floating col-sm-12 row mb-3">
+        <input type="text" name="first_name" size="40" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <label for="floatingInput">Imię</label>
+        {{ form.first_name.errors }}
+      </div>
+  
+      <div class="form-floating col-sm-12 row mb-3">
+        <input type="text" name="last_name" size="40" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <label for="floatingInput">Nazwisko</label>
+        {{ form.last_name.errors }}
+      </div>
+
+      <div class="form-floating col-sm-12 row mb-3">
+        <input type="email" name="email" size="40" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <label for="floatingInput">Adres e-mail</label>
+        {{ form.email.errors }}
+      </div>
+  
+      <div class="form-floating col-sm-12 row mb-3">
+        <input type="password" name="password1" size="40" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <label for="floatingInput">Hasło</label>
+        {{ form.password1.errors }}
+      </div>
+
+      <div class="form-floating col-sm-12 row mb-3">
+        <input type="password" name="password2" size="40" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <label for="floatingInput">Powtórz hasło</label>
+        {{ form.password2.errors }}
+      </div>
+      
+      <button type="submit" class="w-100 btn btn-lg btn-primary">Zarejestruj się</button>
     </form>
-</main>
+  </main>
 {% endblock %}
