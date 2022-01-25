@@ -18,7 +18,8 @@ class AppointmentCreateView(CreateView):
 
 
 class AppointmentListView(ListView):
-    model = Appointment
+    def get_queryset(self):
+        return Appointment.objects.filter(client=self.request.user)
 
 
 class AppointmentDeleteView(DeleteView):
