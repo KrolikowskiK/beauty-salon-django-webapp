@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
-from .models import Appointment, Employee
+from .models import Appointment, Employee, Opinion
 
 
 class EmployeeForm(forms.ModelForm):
@@ -46,3 +46,9 @@ class AppointmentCreate(forms.ModelForm):
     class Meta:
         model = Appointment
         fields = ["employee", "client", "date"]
+
+
+class OpinionCreateForm(forms.ModelForm):
+    class Meta:
+        model = Opinion
+        fields = ["employee", "client", "text"]

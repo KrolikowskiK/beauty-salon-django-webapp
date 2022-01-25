@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Service, Employee, WorkSchedule, Shift, Appointment
+from .models import Service, Employee, WorkSchedule, Shift, Appointment, Opinion
 from .forms import EmployeeForm
 
 
@@ -32,3 +32,4 @@ admin.site.register(Service, ServiceAdmin)
 admin.site.register(Employee, EmployeeAdmin)
 admin.site.register(WorkSchedule, WorkScheduleAdmin)
 admin.site.register(Appointment)
+admin.site.register(Opinion)

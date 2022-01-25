@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista opinii{% endblock %}
+
+{% block content %}
+  <main>
+    <h1>Opinie</h1>
+    {% for opinion in object_list %}
+      <div>
+        <h5>Data: {{ opinion.date|date }}</h2>
+        <h5>Pracownik: {{ opinion.employee }}</h3>
+        <p>{{ opinion.text }}</p>
+        <button><a href="{{ opinion.get_delete_url }}">Usuń</a></button>
+      </div>
+    {% empty %}
+      <h2>Brak opinii.</h2>
+    {% endfor %}
+  </main>
+{% endblock %}

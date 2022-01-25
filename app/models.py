@@ -122,3 +122,46 @@ class Appointment(models.Model):
     class Meta:
         verbose_name = "wizyta"
         verbose_name_plural = "wizyty"
+
+
+class Opinion(models.Model):
+    employee = models.ForeignKey(
+        Employee,
+        verbose_name="pracownik",
+        on_delete=models.CASCADE,
+        related_name="employee_opinions",
+    )
+    client = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        verbose_name="klient",
+        on_delete=models.CASCADE,
+        related_name="client_opinions",
+    )
+    text = models.TextField("treść")
+    date = models.DateField(auto_now_add=True)
+
+    def get_delete_url(self):
+        return reverse("opinion-delete", kwargs={"pk": self.id})
+
+    @admin.display(description="Pracownik")
+    def opinion_employee(self):
+        return self.employee
+
+    @admin.display(description="Klient")
+    def opinion_client(self):
+        return self.client
+
+    @admin.display(description="Treść")
+    def opinion_text(self):
+        return self.text
+
+    @admin.display(description="Data")
+    def opinion_date(self):
+        return self.date
+
+    def __str__(self) -> str:
+        return self.text
+
+    class Meta:
+        verbose_name = "opinia"
+        verbose_name_plural = "opinie"

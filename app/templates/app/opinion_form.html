@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load custom_tags %}
+
+{% block title %}Dodaj nową opinię{% endblock %}
+
+{% block content %}
+  <main>
+    <form novalidate method="post">{% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Wyślij</button>
+    </form>
+  </main>
+{% endblock %}
