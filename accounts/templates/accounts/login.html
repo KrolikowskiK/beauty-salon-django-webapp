@@ -4,26 +4,25 @@
 {% block title %}Logowanie{% endblock %}
 
 {% block content %} 
-<main class="form-login position-absolute top-50 start-50 translate-middle">
-  <form novalidate method="post">
-    {% csrf_token %}
-    {{ form.non_field_errors }}
-    <h1 class="h3 mb-3 fw-normal text-center">Zaloguj się</h1>
+  <main class="form-login position-absolute top-50 start-50 translate-middle">
+    <form novalidate method="post">{% csrf_token %}
+      {{ form.non_field_errors }}
+      <h1 class="h3 mb-3 fw-normal text-center">Zaloguj się</h1>
 
-    <div class="form-floating col-sm-12 row mb-3">
-      <input type="email" name="username" size="40" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">Adres e-mail</label>
-      {{ form.username.errors }}
-    </div>
+      <div class="form-floating col-sm-12 row mb-3">
+        <input type="email" name="username" size="40" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <label for="floatingInput">Adres e-mail</label>
+        {{ form.username.errors }}
+      </div>
 
-    <div class="form-floating col-sm-12 row mb-3">
-      <input type="password" name="password" size="40" class="form-control" id="floatingPassword" placeholder="Password">
-      <label for="floatingPassword">Hasło</label>
-      {{ form.password.errors }}
-    </div>
-    
-    <button type="submit" class="w-100 btn btn-lg btn-primary">Zaloguj</button>
-  </form>
-</main>
+      <div class="form-floating col-sm-12 row mb-3">
+        <input type="password" name="password" size="40" class="form-control" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Hasło</label>
+        {{ form.password.errors }}
+      </div>
+      
+      <button type="submit" class="w-100 btn btn-lg btn-primary">Zaloguj</button>
+    </form>
+  </main>
 {% endblock %}
 

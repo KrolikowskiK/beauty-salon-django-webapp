@@ -4,4 +4,7 @@
         "editor.formatOnSave": true,
         "editor.rulers": [88]
     },
+    "[html]": {
+        "editor.tabSize": 2
+    }
 }

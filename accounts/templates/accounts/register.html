@@ -4,9 +4,8 @@
 {% block title %}Rejestracja{% endblock %}
 
 {% block content %}
-<main class="form-login position-absolute top-50 start-50 translate-middle">
-    <form novalidate method="post">
-      {% csrf_token %}
+  <main class="form-login position-absolute top-50 start-50 translate-middle">
+    <form novalidate method="post">{% csrf_token %}
       {{ form.non_field_errors }}
       <h1 class="h3 mb-3 fw-normal text-center">Zarejestruj się</h1>
   
