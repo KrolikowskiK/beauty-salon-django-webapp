@@ -15,7 +15,7 @@ urlpatterns = [
     path(
         "appointments/<int:pk>/delete/",
         AppointmentDeleteView.as_view(),
-        name="author-delete",
+        name="appointment-delete",
     ),
     path("opinions/", OpinionListView.as_view(), name="opinion-list"),
     path("opinions/add/", OpinionCreateView.as_view(), name="opinion-add"),

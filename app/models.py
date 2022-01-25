@@ -114,7 +114,7 @@ class Appointment(models.Model):
     date = models.DateTimeField("data wizyty")
 
     def get_delete_url(self):
-        return reverse("author-delete", kwargs={"pk": self.id})
+        return reverse("appointment-delete", kwargs={"pk": self.id})
 
     def __str__(self) -> str:
         return f"Wizyta {self.client} u {self.employee} ({self.date.strftime('%d/%m/%Y %H:%M')})"
