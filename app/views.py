@@ -45,4 +45,4 @@ class WorkScheduleListView(ListView):
 
 
 class WorkScheduleDetailView(DetailView):
-    pass
+    model = WorkSchedule

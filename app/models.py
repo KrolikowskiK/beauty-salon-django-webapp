@@ -71,6 +71,9 @@ class WorkSchedule(models.Model):
     def employee_name(self):
         return self.employee
 
+    def get_absolute_url(self):
+        return reverse("workschedule-detail", kwargs={"pk": self.pk})
+
     def __str__(self) -> str:
         employee = self.employee
         date = self.date.strftime("%m/%Y")

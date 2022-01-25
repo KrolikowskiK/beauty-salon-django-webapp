@@ -7,8 +7,7 @@
     <h1>Grafiki</h1>
     {% for work_schedule in object_list %}
       <div>
-        <h5>Data: {{ work_schedule.date|date }}</h5>
-        <div>{{ work_schedule.shift_set }}</div>
+        <h5>Data: <a href="{{ work_schedule.get_absolute_url }}">{{ work_schedule.date|date:"m/Y" }}</a></h5>
       </div>
     {% empty %}
       <h2>Brak przypisanych grafików.</h2>
