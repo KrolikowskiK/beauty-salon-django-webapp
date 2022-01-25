@@ -11,10 +11,4 @@ class RegisterView(CreateView):
 
 
 class UserLoginView(LoginView):
-    """
-    Manages user sign in with CustomUserAuthenticationForm
-    which is passed as an argument to as_view function in mysite/urls.py.
-    Redirects user to search page.
-    """
-
     template_name = "accounts/login.html"

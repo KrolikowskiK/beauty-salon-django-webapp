@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista grafików{% endblock %}
+
+{% block content %}
+  <main>
+    <h1>Grafiki</h1>
+    {% for work_schedule in object_list %}
+      <div>
+        <h5>Data: {{ work_schedule.date|date }}</h5>
+        <div>{{ work_schedule.shift_set }}</div>
+      </div>
+    {% empty %}
+      <h2>Brak przypisanych grafików.</h2>
+    {% endfor %}
+  </main>
+{% endblock %}
