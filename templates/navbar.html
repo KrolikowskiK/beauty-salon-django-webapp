@@ -18,10 +18,13 @@
   <div class="collapse navbar-collapse" id="main-nav">
     {% if user.is_authenticated %}
       <ul class="nav col-12 col-sm-8 col-lg-auto me-auto mb-2 justify-content-center mb-md-0">
-        <li class="nav-item"><a href="{% url 'appointment-add' %}" class="nav-link px-2 text-white">Umów wizytę</a></li>
-        <li class="nav-item"><a href="{% url 'appointment-list' %}" class="nav-link px-2 text-white">Wizyty</a></li>
-        <li class="nav-item"><a href="{% url 'opinion-add' %}" class="nav-link px-2 text-white">Dodaj opinię</a></li>
-        <li class="nav-item"><a href="{% url 'workschedule-list' %}" class="nav-link px-2 text-white">Grafiki</a></li>
+        {% if user.employee %}
+          <li class="nav-item"><a href="{% url 'workschedule-list' %}" class="nav-link px-2 text-white">Grafiki</a></li>
+        {% else %}
+          <li class="nav-item"><a href="{% url 'appointment-add' %}" class="nav-link px-2 text-white">Umów wizytę</a></li>
+          <li class="nav-item"><a href="{% url 'appointment-list' %}" class="nav-link px-2 text-white">Wizyty</a></li>
+          <li class="nav-item"><a href="{% url 'opinion-add' %}" class="nav-link px-2 text-white">Dodaj opinię</a></li>
+        {% endif %}
       </ul>
       <div class="text-end"> 
           <a href="{% url 'logout' %}" class="btn btn-warning me-2">Wyloguj</a> 
