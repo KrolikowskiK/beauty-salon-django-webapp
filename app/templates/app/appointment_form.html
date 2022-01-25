@@ -8,14 +8,20 @@
     <form novalidate method="post">{% csrf_token %}
       {{ form.non_field_errors }}
       <h1 class="h3 mb-3 fw-normal text-center">Umów wizytę</h1>
-      {% for field in form.visible_fields %}
-        <div class="form-floating col-sm-12 row mb-3">
-          {{ field|addclass:'form-control' }}
-          {{ field.label_tag }}
-          {{ field.errors }}
-        </div>
-      {% endfor %}
-      <button type="submit" class="w-100 btn btn-lg btn-primary">Submit</button>
+
+      <div class="form-floating row mb-3">
+        {{ form.employee|addclass:'form-control' }}
+        {{ form.employee.label_tag }}
+        {{ form.employee.errors }}
+      </div>
+
+      <div class="form-floating row mb-3">
+        {{ form.date|addclass:'form-control' }}
+        {{ form.date.label_tag }}
+        {{ form.date.errors }}
+      </div>
+
+      <button type="submit" class="w-100 btn btn-lg btn-primary">Zarezerwuj</button>
     </form>
   </main>
 {% endblock %}
