@@ -4,17 +4,29 @@
 {% block title %}Grafik{% endblock %}
 
 {% block content %}
-  <main>
-    <!-- <h1>Wizyty</h1>
-    <ul>
-      {% for appointment in object_list %}
-        <li>
-          {{ appointment.employee }} - {{ appointment.date|date }} <a href="{{ appointment.get_delete_url }}">Usuń</a>
-        </li>
-      {% empty %}
-        <li>Brak wizyt.</li>
-      {% endfor %}
-    </ul> -->
-    <h1>Cumming soon</h1>
+  <main id="schedulesdet">
+    <div class="container-lg">
+      <div class="text-center pt-3">
+        <h1>Harmonogram czasu pracy na {{ object.date|date:"F"|lower }}</h1>
+      </div>
+      <table class="table table-striped table-hover mt-4 text-center">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Data</th>
+            <th scope="col">Początek pracy</th>
+            <th scope="col">Koniec pracy</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for shift in object.shift_set.all %}
+            <tr>
+              <td>{{ shift.date|date:"d/m/Y" }}</td>
+              <td>{{ shift.start }}</td>
+              <td>{{ shift.end }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
   </main>
 {% endblock %}
