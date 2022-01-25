@@ -5,14 +5,18 @@ from django.views import View
 from django.urls import reverse_lazy
 from django.shortcuts import redirect, render
 
-from .models import Appointment, Opinion, WorkSchedule
-from .forms import AppointmentCreate, OpinionCreateForm
+from .models import Appointment, WorkSchedule
+from .forms import OpinionCreateForm
 
 
 class AppointmentCreateView(CreateView):
     model = Appointment
-    form_class = AppointmentCreate
     success_url = reverse_lazy("appointment-list")
+    fields = ["employee", "date"]
+
+    def form_valid(self, form):
+        form.instance.client = self.request.user
+        return super().form_valid(form)
 
 
 class AppointmentListView(ListView):
