@@ -34,19 +34,9 @@ class OpinionCreateView(View):
     def post(self, request):
         form = OpinionCreateForm(request.POST or None)
         if form.is_valid():
-            print(form.cleaned_data)
             form.save()
-            redirect("opinion-list")
+            return redirect("intro-view")
         return render(request, self.template, {"form": form})
-
-
-class OpinionListView(ListView):
-    model = Opinion
-
-
-class OpinionDeleteView(DeleteView):
-    model = Opinion
-    success_url = reverse_lazy("opinion-list")
 
 
 class WorkScheduleListView(ListView):

@@ -4,10 +4,38 @@
 {% block title %}Dodaj nową opinię{% endblock %}
 
 {% block content %}
-  <main>
-    <form novalidate method="post">{% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Wyślij</button>
-    </form>
+  <main id="contact">
+    <div class="container-lg">
+      <div class="text-center">
+        <h2>Podziel się swoją opinią</h2>
+      </div>
+      <div class="row justify-content-center my-5">
+        <div class="col-lg-6">
+          <form novalidate method="post">{% csrf_token %}
+            <label for="name" class="form-label">Twoje imię:</label>
+            <div class="mb-4 input-group">
+              {{ form.name|addclass:'form-control' }}
+            </div>
+            {{ form.name.errors }}
+
+            <label for="pracownik" class="form-label">Wybierz pracownika:</label>
+            <div class="mb-4 input-group">
+              {{ form.employee|addclass:'form-select' }}
+            </div>
+            {{ form.employee.errors }}
+
+            <label for="opinion" class="form-label">Twoja opinia:</label>
+            <div class="form-floating mb-4">
+              {{ form.text|addclass:'form-control' }}
+            </div>
+            {{ form.text.errors }}
+
+            <div class="mb-4 text-center">
+              <button type="submit" class="btn btn-primary">Prześlij</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </main>
 {% endblock %}

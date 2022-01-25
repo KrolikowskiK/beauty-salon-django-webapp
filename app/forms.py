@@ -51,4 +51,4 @@ class AppointmentCreate(forms.ModelForm):
 class OpinionCreateForm(forms.ModelForm):
     class Meta:
         model = Opinion
-        fields = ["employee", "client", "text"]
+        fields = ["name", "employee", "text"]

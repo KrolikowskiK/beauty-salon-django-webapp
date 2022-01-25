@@ -131,12 +131,7 @@ class Opinion(models.Model):
         on_delete=models.CASCADE,
         related_name="employee_opinions",
     )
-    client = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        verbose_name="klient",
-        on_delete=models.CASCADE,
-        related_name="client_opinions",
-    )
+    name = models.CharField("imię", max_length=40)
     text = models.TextField("treść")
     date = models.DateField(auto_now_add=True)
 
@@ -147,9 +142,9 @@ class Opinion(models.Model):
     def opinion_employee(self):
         return self.employee
 
-    @admin.display(description="Klient")
-    def opinion_client(self):
-        return self.client
+    @admin.display(description="Imię")
+    def opinion_name(self):
+        return self.name
 
     @admin.display(description="Treść")
     def opinion_text(self):

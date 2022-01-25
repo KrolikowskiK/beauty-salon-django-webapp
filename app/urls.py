@@ -5,8 +5,6 @@ from .views import (
     AppointmentListView,
     AppointmentDeleteView,
     OpinionCreateView,
-    OpinionListView,
-    OpinionDeleteView,
     WorkScheduleListView,
     WorkScheduleDetailView,
 )
@@ -28,19 +26,9 @@ urlpatterns = [
         name="appointment-delete",
     ),
     path(
-        "opinions/",
-        OpinionListView.as_view(),
-        name="opinion-list",
-    ),
-    path(
         "opinions/add/",
         OpinionCreateView.as_view(),
         name="opinion-add",
-    ),
-    path(
-        "opinions/<int:pk>/delete/",
-        OpinionDeleteView.as_view(),
-        name="opinion-delete",
     ),
     path(
         "work-schedules/",
