@@ -3,14 +3,20 @@
 {% block title %}Lista grafików{% endblock %}
 
 {% block content %}
-  <main>
-    <h1>Grafiki</h1>
-    {% for work_schedule in object_list %}
-      <div>
-        <h5>Data: <a href="{{ work_schedule.get_absolute_url }}">{{ work_schedule.date|date:"m/Y" }}</a></h5>
+  <main id="schedules">
+    <div class="container-lg">
+      <div class="text-center">
+        <h1>Harmonogramy czasu pracy</h1>
       </div>
-    {% empty %}
+      {% if object_list %}
+      {% for work_schedule in object_list %}
+      <ul class="list-group mt-3">
+        <li class="list-group-item">Miesiąc: <a href="{{ work_schedule.get_absolute_url }}">{{ work_schedule.date|date:"m/Y" }}</a></li>
+      </ul>
+      {% endfor %}
+     {% else %}
       <h2>Brak przypisanych grafików.</h2>
-    {% endfor %}
+      {% endif %}
+    </div>
   </main>
 {% endblock %}
