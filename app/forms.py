@@ -41,6 +41,11 @@ class AppointmentCreate(forms.ModelForm):
     employee = MyModelChoiceField(
         queryset=Employee.objects.all(), label="Pracownik i usługa"
     )
+    date = forms.DateTimeField(
+        widget=forms.DateTimeInput(attrs={"placeholder": "DD/MM/YYYY HH:MM"}),
+        localize=True,
+        input_formats=["%d/%m/%Y %H:%M"],
+    )
 
     class Meta:
         model = Appointment
