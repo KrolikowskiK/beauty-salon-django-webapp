@@ -45,6 +45,7 @@ class AppointmentCreate(forms.ModelForm):
         widget=forms.DateTimeInput(attrs={"placeholder": "DD/MM/YYYY HH:MM"}),
         localize=True,
         input_formats=["%d/%m/%Y %H:%M"],
+        label="Data i godzina",
     )
 
     class Meta:

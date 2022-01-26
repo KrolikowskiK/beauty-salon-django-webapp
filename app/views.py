@@ -21,6 +21,8 @@ class AppointmentCreateView(LoginRequiredMixin, CreateView):
 
 class AppointmentListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
+        if hasattr(self.request.user, "employee"):
+            return Appointment.objects.filter(employee=self.request.user.employee)
         return Appointment.objects.filter(client=self.request.user)
 
 
