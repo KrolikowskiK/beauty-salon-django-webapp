@@ -61,9 +61,9 @@ class AppointmentCreate(forms.ModelForm):
             )
             employee_shift = employee_workschedule.shift_set.get(date__day=date.day)
             if not employee_shift.start <= date.time() <= employee_shift.end:
-                raise ValidationError("Brak wolych terminów w danym czasie.")
+                raise ValidationError("Brak wolnych terminów w danym czasie.")
         except ObjectDoesNotExist:
-            raise ValidationError("Brak wolych terminów w danym czasie.")
+            raise ValidationError("Brak wolnych terminów w danym czasie.")
 
         # Check if there are any appointments within one hour range from added
         # appointment
@@ -72,7 +72,7 @@ class AppointmentCreate(forms.ModelForm):
             Appointment.objects.filter(date__range=(date - delta, date + delta)).count()
             > 0
         ):
-            raise ValidationError("Brak wolych terminów w danym czasie.")
+            raise ValidationError("Brak wolnych terminów w danym czasie.")
 
         return date
 
