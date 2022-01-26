@@ -21,7 +21,7 @@
               <th scope="col">Rodzaj wizyty</th>
               <th scope="col">Data</th>
               <th scope="col">Godzina</th>
-              {% if user.employee is False %}
+              {% if not user.employee %}
                 <th scope="col">Uwagi</th>
               {% endif %}
             </tr>
@@ -37,7 +37,7 @@
                 <td>{{ appointment.employee.service }}</td>
                 <td>{{ appointment.date|date }}</td>
                 <td>{{ appointment.date|date:"H:i" }}</td>
-                {% if user.employee is False %}
+                {% if not user.employee %}
                   <td><a href="{{ appointment.get_delete_url }}" class="btn btn-danger me-2">Anuluj wizytę</a></td>
                 {% endif %}
               </tr>
