@@ -5,17 +5,18 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Appointment, Opinion, WorkSchedule
-from .forms import OpinionCreateForm
+from .forms import OpinionCreateForm, AppointmentCreate
 
 
 class AppointmentCreateView(LoginRequiredMixin, CreateView):
     model = Appointment
     success_url = reverse_lazy("appointment-list")
-    fields = ["employee", "date"]
+    form_class = AppointmentCreate
 
-    def form_valid(self, form):
-        form.instance.client = self.request.user
-        return super().form_valid(form)
+    def get_initial(self):
+        initial = super(AppointmentCreateView, self).get_initial()
+        initial["client"] = f"{self.request.user.pk}"
+        return initial
 
 
 class AppointmentListView(LoginRequiredMixin, ListView):
