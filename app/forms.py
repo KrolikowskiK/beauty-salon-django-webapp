@@ -2,6 +2,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 
 from .models import Appointment, Employee, Opinion
+from .fields import MyModelChoiceField
 
 
 class EmployeeForm(forms.ModelForm):
@@ -37,6 +38,10 @@ class EmployeeForm(forms.ModelForm):
 
 
 class AppointmentCreate(forms.ModelForm):
+    employee = MyModelChoiceField(
+        queryset=Employee.objects.all(), label="Pracownik i usługa"
+    )
+
     class Meta:
         model = Appointment
         fields = ["employee", "client", "date"]
