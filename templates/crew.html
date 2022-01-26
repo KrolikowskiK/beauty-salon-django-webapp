@@ -1,43 +1,40 @@
+{% load static %}
+
 <section id="crew" class="d-md-flex flex-md-equal w-100 bg-light mt-5">
   <div class="container-lg">
     <div class="text-center">
-      <h2>Nasza załoga</h2>
-      <p class="lead text-muted">Jeszcze nie wiem co</p>
+      <h1>Nasza załoga</h1>
+      <p class="lead text-muted">Czym się zajmujemy?</p>
     </div>
 
-    <div class="row my-5 align-items-center justify-content-center g-0">
-      <div class="col-8 col-lg-4 col-xl-3">
-        <div class="card border-0">
-          <div class="card-body text-center py-4">
-            <h4 class="card-title">Karolina Niedźwiedź</h4>
-            <p class="lead card-subtitle">Manicure</p>
-            <p class="display-5 my-4 text-primary fw-bold">Zdjęcie laski</p>
-            <p class="card-text mx-5 text-muted d-none d-lg-block">Paznokciowy Picasso</p>
-          </div>
+    <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+      <div class="bg-light me-md-3 pt-1 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+        <div class="my-3 py-3">
+          <h2 class="display-6">Karolina Niedźwiedź</h2>
+          <p class="fs-4 text-muted">Manicure</p>
+        </div>
+        <div>
+          <img src="{% static 'karolina.jpg' %}" width="300" height="300" alt="It do be like that sometimes"></div>
+      </div>
+      <div class="bg-light me-md-3 pt-1 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+        <div class="my-3 py-3">
+          <h2 class="display-6">Klaudia Kamińska</h2>
+          <p class="fs-4 text-muted">Makijaż</p>
+        </div>
+        <div>
+        <img src="{% static 'klaudia.jpg' %}" width="300" height="300" alt="It do be like that sometimes">
+        </div>
+      </div>
+      <div class="bg-light me-md-3 pt-1 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+        <div class="my-3 py-3">
+          <h2 class="display-6">Paulina Ostrowska</h2>
+          <p class="fs-4 text-muted">Rzęsy</p>
+        </div>
+        <div>
+          <img src="{% static 'paulina.jpg' %}" width="300" height="300" alt="It do be like that sometimes">
         </div>
       </div>
       
-      <div class="col-8 col-lg-4 col-xl-3">
-        <div class="card border-0">
-          <div class="card-body text-center py-5">
-            <h4 class="card-title">Klaudia Kamińska</h4>
-            <p class="lead card-subtitle">Makijaż</p>
-            <p class="display-5 my-4 text-primary fw-bold">Zdjęcie laski</p>
-            <p class="card-text mx-5 text-muted d-none d-lg-block">Urodzona z pędzlem w dłoni.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-8 col-lg-4 col-xl-3">
-        <div class="card border-0">
-          <div class="card-body text-center py-4">
-            <h4 class="card-title">Paulina Ostrowska</h4>
-            <p class="lead card-subtitle">Przedłużanie rzęs</p>
-            <p class="display-5 my-4 text-primary fw-bold">Zdjęcie laski</p>
-            <p class="card-text mx-5 text-muted d-none d-lg-block">Czarodziejka zalotnego mrugania</p>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>

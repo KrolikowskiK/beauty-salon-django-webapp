@@ -1,14 +1,25 @@
+
 {% extends 'base.html' %}
+{% load static %}
 {% load custom_tags %}
 
 {% block title %}Potwierdź odwołanie wizyty{% endblock %}
 
 {% block content %}
   <main>
-    <form method="post">{% csrf_token %}
-      <p>Czy jesteś pewien, że chcesz odwołać wizytę: "{{ object }}"?</p>
+    <div class="px-4 py-5 my-5 text-center">
+      <img  src="{% static 'pngegg.png' %}" class="d-block mx-auto mb-4" alt="" width="72" height="57">
+      <form method="post">{% csrf_token %}
+        <h1 class="display-5 fw-bold">Na pewno chcesz odwołać wizytę: </h1>
+        <div class="col-lg-6 mx-auto">
+          <p class="lead mb-4">"{{ object }}"?</p>
       {{ form }}
-      <input type="submit" value="Confirm">
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <button type="submit" class="btn btn-danger btn-lg px-4 gap-3">Odwołaj wizytę</button>
+        <a href="{% url 'appointment-list' %}" class="btn btn-outline-success btn-lg px-4">Nie odwołuj</a>
+      </div>
+    </div>
     </form>
+    </div>
   </main>
 {% endblock %}
